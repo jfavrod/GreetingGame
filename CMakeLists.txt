@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.13.4)
+project(GreetingGame VERSION 0.1.0)
+set(CMAKE_CXX_STANDARD 11)
+set(SOURCES src/Agent.cpp src/Game.cpp src/main.cpp inc/Agent.h inc/Game.h)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../)
+add_executable(GreetingGame ${SOURCES})
