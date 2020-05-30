@@ -1,19 +1,15 @@
 #ifndef AGENT_H
 #define AGENT_H
 #include <string>
-#include <vector>
+#include "../inc/Array/Array.h"
+#include "../inc/Greeting.h"
 
 int static count = 0;
 
-enum Greeting {
-    bow,
-    kiss,
-    shake
-};
-
 class Agent {
     protected:
-    std::vector<Agent *> connections;
+    int connection_count;
+    Array<Agent*> connections;
     Greeting greeting;
     int id;
     int klout;

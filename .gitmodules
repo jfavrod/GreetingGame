@@ -1,0 +1,3 @@
+[submodule "inc/Array"]
+	path = inc/Array
+	url = git@github.com:jfavrod/Array.h.git

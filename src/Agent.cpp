@@ -4,29 +4,29 @@
 #include "../inc/Agent.h"
 
 Agent::Agent(int id) {
-    srand(time(0));
-
     this->id = id;
     this->greeting = Greeting(rand() % 3);
     this->klout = std::rand();
 }
 
 Agent::Agent(int id, Greeting greeting) {
-    srand(time(0));
     this->id = id;
     this->greeting = greeting;
     this->klout = std::rand();
 }
 
 Agent::Agent(int id, Greeting greeting, int klout) {
-    srand(time(0));
     this->id = id;
     this->greeting = greeting;
     this->klout = klout;
 }
 
 void Agent::connect(Agent *agent) {
-    this->connections.push_back(agent);
+    if (agent->get_id() != this->id) {
+        this->connections.push(agent);
+    }
+
+    this->connection_count++;
 }
 
 Greeting Agent::get_greeting() {
@@ -37,8 +37,14 @@ int Agent::get_id() {
     return this->id;
 }
 
+int Agent::get_klout() {
+    return this->klout;
+}
+
 void Agent::greet(Agent agent) {
-    return;
+    if (agent.get_klout() > this->klout) {
+        this->greeting = agent.get_greeting();
+    }
 }
 
 std::string Agent::to_string() {
