@@ -21,12 +21,14 @@ Agent::Agent(int id, Greeting greeting, int klout) {
     this->klout = klout;
 }
 
-void Agent::connect(Agent *agent) {
-    if (agent->get_id() != this->id) {
+bool Agent::connect(Agent *agent) {
+    if (agent->get_id() != this->id && !this->is_connected(agent)) {
         this->connections.push(agent);
+        this->connection_count++;
+        return true;
     }
 
-    this->connection_count++;
+    return false;
 }
 
 Greeting Agent::get_greeting() {
@@ -45,6 +47,16 @@ void Agent::greet(Agent agent) {
     if (agent.get_klout() > this->klout) {
         this->greeting = agent.get_greeting();
     }
+}
+
+bool Agent::is_connected(Agent *agent) {
+    for (int i = 0; i < this->connections.length(); i++) {
+        if (this->connections[i]->get_id() == agent->get_id()) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 std::string Agent::to_string() {

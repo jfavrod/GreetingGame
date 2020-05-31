@@ -18,12 +18,13 @@ class Agent {
     Agent(int id);
     Agent(int id, Greeting greeting);
     Agent(int id, Greeting greeting, int klout);
-    void connect(Agent *agent);
+    bool connect(Agent *agent);
     Greeting get_greeting();
     int get_id();
     int get_klout();
     void greet(Agent agent);
-    bool is_connected();
+    /** Check if given agent is connected to this agent. */
+    bool is_connected(Agent *);
     std::string to_string();
 };
 
