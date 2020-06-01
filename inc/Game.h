@@ -8,6 +8,7 @@
 class Game {
     private:
     const char * db_string;
+    double equilibrium;
     int id;
     int num_agents;
     int num_connection;
@@ -23,6 +24,8 @@ class Game {
      * Pick an agent at random from the agents collection.
      */
     Agent *get_rand_agent();
+    bool is_equilibrium();
+    void record_connections();
     void record_game_start();
     void validate_initialization_params();
 

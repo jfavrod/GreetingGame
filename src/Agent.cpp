@@ -1,7 +1,9 @@
+#include <iostream>
 #include <stdlib.h>
 #include <string>
 #include <time.h>
 #include "../inc/Agent.h"
+#include "../inc/Array/Array.h"
 
 Agent::Agent(int id) {
     this->id = id;
@@ -29,6 +31,20 @@ bool Agent::connect(Agent *agent) {
     }
 
     return false;
+}
+
+Array<Agent *>* Agent::get_connected() {
+    return &(this->connections);
+}
+
+Array<int> Agent::get_connected_ids() {
+    Array<int> ids = Array<int>();
+
+    for (int i = 0; i < this->connections.length(); i++) {
+        ids.push(this->connections[i]->get_id());
+    }
+
+    return ids;
 }
 
 Greeting Agent::get_greeting() {

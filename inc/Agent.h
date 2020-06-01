@@ -19,6 +19,8 @@ class Agent {
     Agent(int id, Greeting greeting);
     Agent(int id, Greeting greeting, int klout);
     bool connect(Agent *agent);
+    Array<Agent *>* get_connected();
+    Array<int> get_connected_ids();
     Greeting get_greeting();
     int get_id();
     int get_klout();
